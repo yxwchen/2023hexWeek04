@@ -1,0 +1,45 @@
+// 第一階段：請寫 printBmi 函式，並印出對應狀態
+
+// printBmi(178, 20) >> 印出 console.log 文字為「您的體重過輕」
+// printBmi(178, 70) >> 印出 console.log 文字為「您的體重正常」
+// printBmi(178, 85)>> 印出 console.log 文字為「您的體重過重」
+// printBmi(178, 90)>> 印出 console.log 文字為「您的體重輕度肥胖」
+// printBmi(178, 110)>> 印出 console.log 文字為「您的體重中度肥胖」
+// printBmi(178, 130)>> 印出 console.log 文字為「您的體重重度肥胖」
+// printBmi("身高","體重")>> 印出 console.log 文字為「您的數值輸入錯誤，請重新輸入」
+
+// 體重過輕	BMI ＜ 18.5
+// 正常範圍	18.5≦BMI＜24
+// 過重	24≦BMI＜27
+// 輕度肥胖	27≦BMI＜30
+// 中度肥胖	30≦BMI＜35
+// 重度肥胖	BMI≧35
+
+function printBmi(height, weight) {
+
+    let bmi = (weight / (height / 100) ** 2).toFixed(2);
+
+    console.log(bmi);
+    if (bmi < 18.5) {
+        console.log(`您的體重過輕`);
+    } else if (bmi >= 18.5 && bmi < 24) {
+        console.log(`您的體重正常`);
+    } else if (bmi >= 24 && bmi < 27) {
+        console.log(`您的體重過重`);
+    } else if (bmi >= 27 && bmi < 30) {
+        console.log(`您的體重輕度肥胖`);
+    } else if (bmi >= 30 && bmi < 35) {
+        console.log(`您的體重中度肥胖`);
+    } else if (bmi >= 35) {
+        console.log(`您的體重重度肥胖`);
+    } else {
+        console.log(`您的數值輸入錯誤，請重新輸入`);
+    }
+}
+printBmi(178, 20);
+printBmi(178, 70);
+printBmi(178, 85);
+printBmi(178, 90);
+printBmi(178, 110);
+printBmi(178, 130);
+printBmi("身高", "體重");
