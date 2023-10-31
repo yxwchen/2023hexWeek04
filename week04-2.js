@@ -1,5 +1,13 @@
 // 第二階段：請程式碼裡加入此變數，並嘗試運用此變數裡的資訊。
 
+// 第三階段：儲存每筆計算資料，多一個變數為 bmiHistoryData，並賦予空陣列來儲存計算物件資料，若數值輸入錯誤，則不儲存。
+
+// printBmi(178, 20) >> 印出 console.log 文字為「您的體重過輕，健康指數為藍色」
+// printBmi(178, 70) >> 印出 console.log 文字為「您的體重正常，健康指數為紅色」
+// printBmi(178, 85)>> 印出 console.log 文字為「您的體重過重，健康指數為澄色」
+// showHistoryData() >> 印出 console.log 文字為「您總共計算 3 次 BMI 紀錄，最後一次 BMI 指數為 26.83，體重過重！健康指數為澄色！」
+
+let bmiHistoryData= [];
 const bmiStatesData = {
   "overThin": {
     "state": "過輕",
@@ -41,6 +49,11 @@ function printBmi(height, weight) {
   console.log(bmi);
 
   if (bmi < 18.5) {
+    let obj = {};
+    obj.bmi = bmi;
+    // console.log(obj);
+    bmiHistoryData.push(obj);
+
     bmiStateText("overThin");
     // console.log(`您的體重${bmiStatesData["overThin"].state}，健康指數為${bmiStatesData["overThin"].color}`);
   } else if (bmi >= 18.5 && bmi < 24) {
@@ -62,10 +75,14 @@ function printBmi(height, weight) {
     console.log(`您的數值輸入錯誤，請重新輸入`);
   }
 }
+function showHistoryData(){
+  console.log(`您總共計算 3 次 BMI 紀錄，最後一次 BMI 指數為 26.83，體重過重！健康指數為澄色！`);
+}
 printBmi(178, 20);
 printBmi(178, 70);
 printBmi(178, 85);
-printBmi(178, 90);
-printBmi(178, 110);
-printBmi(178, 130);
-printBmi("身高", "體重");
+showHistoryData();
+// printBmi(178, 90);
+// printBmi(178, 110);
+// printBmi(178, 130);
+// printBmi("身高", "體重");
