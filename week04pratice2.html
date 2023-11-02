@@ -87,6 +87,7 @@ bmiHistoryData
     </p>
 </body>
 <script>
+    let bmiHistoryData = [];
     const bmiStatesData = {
         "overThin": {
             "state": "過輕",
@@ -118,6 +119,18 @@ bmiHistoryData
         console.log(`您的體重${bmiStatesData[state].state}，健康指數為${bmiStatesData[state].color}`);
     }
 
+    function showHistoryData() {
+        console.log(`您總共計算 3 次 BMI 紀錄，最後一次 BMI 指數為 26.83，體重過重！健康指數為澄色！`);
+    }
+
+    function addData(bmi, bmiState) {
+        console.log(` ${bmi} ${bmiState}`);
+        bmiHistoryData.push({
+            bmi,
+            bmiState
+        });
+    }
+
 
     function printBmi(height, weight) {
         let bmi = (weight / (height / 100) ** 2).toFixed(2);
@@ -143,17 +156,21 @@ bmiHistoryData
             console.log(`其他`);
         }
         showText(bmiState);
+        addData(bmi, bmiState);
     }
+
 
 
 
     printBmi(178, 20);
     printBmi(178, 70);
     printBmi(178, 85);
-    printBmi(178, 90);
-    printBmi(178, 110);
-    printBmi(178, 130);
-    printBmi("身高", "體重");
+    showHistoryData();
+    console.log(bmiHistoryData);
+    // printBmi(178, 90);
+    // printBmi(178, 110);
+    // printBmi(178, 130);
+    // printBmi("身高", "體重");
 </script>
 
 </html>
