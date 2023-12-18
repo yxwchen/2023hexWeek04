@@ -123,13 +123,13 @@ bmiHistoryData
         console.log(`您總共計算 3 次 BMI 紀錄，最後一次 BMI 指數為 26.83，體重過重！健康指數為澄色！`);
     }
 
-    function addData(bmi, bmiState) {
-        console.log(` ${bmi} ${bmiState}`);
-        bmiHistoryData.push({
-            bmi,
-            bmiState
-        });
-    }
+    // function addData(bmi, bmiState) {
+    //     console.log(` ${bmi} ${bmiState}`);
+    //     bmiHistoryData.push({
+    //         bmi,
+    //         bmiState
+    //     });
+    // }
 
 
     function printBmi(height, weight) {
@@ -156,7 +156,7 @@ bmiHistoryData
             console.log(`其他`);
         }
         showText(bmiState);
-        addData(bmi, bmiState);
+        // addData(bmi, bmiState);
     }
 
 
@@ -166,7 +166,7 @@ bmiHistoryData
     printBmi(178, 70);
     printBmi(178, 85);
     showHistoryData();
-    console.log(bmiHistoryData);
+    // console.log(bmiHistoryData);
     // printBmi(178, 90);
     // printBmi(178, 110);
     // printBmi(178, 130);
