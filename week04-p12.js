@@ -78,7 +78,6 @@
 //         輕度肥胖 27≦BMI＜30
 //         中度肥胖 30≦BMI＜35
 //         重度肥胖 BMI≧35
-
 const bmiStatesData = {
     "overThin": {
         "state": "過輕",
@@ -107,59 +106,63 @@ const bmiStatesData = {
 }
 let bmiHistoryData = [];
 
-// 顯示bmi文字
 function showText(bmiState) {
     console.log(`您的體重${bmiStatesData[bmiState].state}，健康指數為${bmiStatesData[bmiState].color}`);
 }
-// 
-function addData(bmi, bmiState) {
-    console.log(bmi, bmiState);
+
+function addData(bmi, state) {
     bmiHistoryData.push({
         bmi,
-        bmiState
-    });
-}
-
-function printBmi(height, weight) {
-    let bmi = (weight / (height / 100) ** 2).toFixed(2);
-    console.log(bmi);
-    if (isNaN(bmi)) {
-        console.log(`您的數值輸入錯誤， 請重新輸入`);
-        return
-    } else {
-        // console.log(`格式正確`);
-        if (bmi < 18.5) {
-            bmiState = 'overThin';
-        } else if (bmi >= 18.5 && bmi < 24) {
-            bmiState = 'normal';
-        } else if (bmi >= 24 && bmi < 27) {
-            bmiState = 'overWeight';
-        } else if (bmi >= 27 && bmi < 30) {
-            bmiState = 'mildFat';
-        } else if (bmi >= 30 && bmi < 35) {
-            bmiState = 'moderateFat';
-        } else if (bmi >= 35) {
-            bmiState = 'severeFat';
-        }
-        showText(bmiState);
-        addData(bmi, bmiState);
-    }
+        state
+    })
 }
 
 function showHistoryData() {
-    let bmiHistoryDataLength = bmiHistoryData.length;
-    let lastDataBmi = bmiHistoryData[bmiHistoryData.length - 1].bmi;
-    let lastDataBmiState = bmiHistoryData[bmiHistoryData.length - 1].bmiState;
-    console.log(lastDataBmi, lastDataBmiState);
-    console.log(`您總共計算 ${bmiHistoryDataLength} 次 BMI 紀錄，最後一次 BMI 指數為${lastDataBmi} ，體重${bmiStatesData[lastDataBmiState].state}！健康指數為${bmiStatesData[lastDataBmiState].color}！`);
+    let bmiHistoryDataNum = bmiHistoryData.length;
+    let lastNum = bmiHistoryData.length - 1;
+    let lastBmi = bmiHistoryData[lastNum].bmi;
+    let lastBmiState = bmiHistoryData[lastNum].state;
+    console.log(`您總共計算 ${bmiHistoryDataNum} 次 BMI 紀錄，最後一次 BMI 指數為${lastBmi}，體重${lastBmiState}！健康指數為${bmiStatesData[lastBmiState].color}！`);
+}
+
+function printBmi(height, weight) {
+    // console.log(height, weight);
+    bmi = (weight / (height / 100) ** 2).toFixed(2);
+    console.log(bmi);
+    if (isNaN(bmi)) {
+        console.log('您的數值輸入錯誤， 請重新輸入');
+        return
+    } else {
+        if (bmi < 18.5) {
+            bmiState = 'overThin';
+            // console.log('您的體重過輕');
+        } else if (bmi >= 18.5 && bmi < 24) {
+            bmiState = 'normal';
+            // console.log('您的體重正常');
+        } else if (bmi >= 24 && bmi < 27) {
+            bmiState = 'overWeight';
+            // console.log('您的體重過重');
+        } else if (bmi >= 27 && bmi < 30) {
+            bmiState = 'mildFat';
+            // console.log('您的體重輕度肥胖');
+        } else if (bmi >= 30 && bmi < 35) {
+            bmiState = 'moderateFat';
+            // console.log('您的體重中度肥胖');
+        } else if (bmi >= 35) {
+            bmiState = 'severeFat';
+            // console.log('您的體重重度肥胖');
+        }
+    }
+    showText(bmiState);
+    addData(bmi, bmiState);
 }
 
 printBmi(178, 20);
 printBmi(178, 70);
-printBmi(158, 70);
-showHistoryData();
-// printBmi(178, 90);
-// printBmi(178, 110);
-// printBmi(178, 130);
+printBmi(178, 85);
+printBmi(178, 90);
+printBmi(178, 110);
+printBmi(178, 130);
 // printBmi("身高", "體重");
 console.log(bmiHistoryData);
+showHistoryData();
